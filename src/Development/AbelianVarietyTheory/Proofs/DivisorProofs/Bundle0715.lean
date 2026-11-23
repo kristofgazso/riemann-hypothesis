@@ -369,6 +369,7 @@ theorem pchern_of (hsep : ∀ {R : Type} [CommRing R] (A : Over (Sp R)) [GrpObj 
   obtain ⟨n, a, b, hc, rfl⟩ := hψ
   obtain ⟨K, r, j, hR, hS, hF, hj⟩ := hcharts (fibUnif u) (hsep A hA) M.U hM.cover
   have hB : K.Based := by
+    haveI : Subsingleton (Empty → ℂ) := ⟨fun _ _ ↦ funext fun e ↦ nomatch e⟩
     obtain ⟨k, hk⟩ := hR.1 (0, 0) trivial
     exact ⟨k, fun z _ ↦ by rwa [Subsingleton.elim z 0]⟩
   obtain ⟨i, uu, ℓ, hi, huu, hℓ, hz⟩ := hpull K r M j hj _ hc
